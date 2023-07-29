@@ -1,0 +1,12 @@
+.card__btn-love{
+width: 21px;
+height: 19px;
+background-image: url("../../../images/Group.svg");
+border: none;
+background-color: transparent;
+cursor: pointer;
+margin-top: 3px;
+}
+.card__btn-love:hover{
+  opacity: .5;
+}
