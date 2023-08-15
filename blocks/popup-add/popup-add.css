@@ -1,0 +1,23 @@
+.popup-add{
+  width: 430px;
+  height: 330px;
+  border-radius: 10px;
+  background: #FFF;
+  box-sizing: border-box;
+  padding: 36px;
+  position: fixed;
+  top: 50%;
+  margin-top: -165px;
+  left: 50%;
+  margin-left: -215px;
+display: none;
+  }
+  .popup-add_opened{
+   display: block;
+  }
+  @media screen and (max-width:537px) {
+    .popup-add{
+      width: 280px;
+      margin-left: -140px;
+    }
+    }

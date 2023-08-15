@@ -25,58 +25,47 @@
             <button class="add-button"></button>
           </section>
           <section class="elements">
-            <div class="cards">
-            <div class="card">
-              <button class="card__btn-trash"></button>
-              <img src="./images/ValleYosemite.jpg" class="card__image" alt="Imagen de un paisaje bello">
-              <h2 class="card__subtitle">Valle de Yosemite</h2>
-              <button class="card__btn-love"></button>
-            </div>
-            <div class="card">
-              <button class="card__btn-trash"></button>
-              <img src="./images/LagoArtificial.jpg" class="card__image" alt="Imagen de venice lago artificial">
-              <h2 class="card__subtitle">Venice, Italy</h2>
-              <button class="card__btn-love"></button>
-            </div>
-            <div class="card">
-              <button class="card__btn-trash"></button>
-              <img src="./images/MontañasCalvas.jpg" class="card__image" alt="Imagen de unas montañas hermosas">
-              <h2 class="card__subtitle">Montañas Calvas</h2>
-              <button class="card__btn-love"></button>
-            </div>
-            <div class="card">
-              <button class="card__btn-trash"></button>
-              <img src="./images/NewYork.jpg" class="card__image" alt="Imagen de una gran avenida de new york">
-              <h2 class="card__subtitle">New York</h2>
-              <button class="card__btn-love"></button>
-            </div>
-            <div class="card">
-              <button class="card__btn-trash"></button>
-              <img src="./images/SevillaEspaña.jpg" class="card__image" alt="Imagen de una parte de sevilla">
-              <h2 class="card__subtitle">Sevilla España</h2>
-              <button class="card__btn-love"></button>
-            </div>
-            <div class="card">
-              <button class="card__btn-trash"></button>
-              <img src="./images/ColiseoRomano.jpg" class="card__image" alt="Imagen del gran coliseo romano">
-              <h2 class="card__subtitle">Coliseo</h2>
-              <button class="card__btn-love"></button>
-            </div>
-            </div>
+              <div class="cards">
+              </div>
+              <div class="big-picture">
+                <div class="big-picture__content">
+                  <img src="https://media.istockphoto.com/id/1403726632/es/foto/vista-a%C3%A9rea-de-barranquilla-colombia-hacia-el-r%C3%ADo-al-atardecer.webp?b=1&s=170667a&w=0&k=20&c=j9ktr6I4pavezYP-f6VUtcNQOIM2xjal_pdLf6_1HCU=" class="big-picture__image-normal" alt="imagen de un paisaje bello">
+                 <h2 class="big-picture__lugar">ciudad por defecto</h2>
+                 <button class="big-picture__btn-close"></button>
+                </div>
+              </div>
           </section>
             <form class="popup">
               <div class="popup__container">
                <h2 class="popup__title">Edit profile</h2>
-               <input type="text" id="popupname" class="popup__name" placeholder="Nombre">
-               <input type="text" id="popupdescripcion" class="popup__descripcion" placeholder="Acerca de mi">
-               <button class="btn-close"></button>
+               <input type="text"  class="popup__name" placeholder="Nombre">
+               <input type="text"  class="popup__descripcion" placeholder="Acerca de mi">
+               <button class="popup__btn-close"></button>
                <button class="popup__btn-save">Guardar</button>
               </div>
             </form>
+            <form class="popup-add">
+              <div class="popup-add__container">
+               <h2 class="popup-add__title">New place</h2>
+               <input type="text"  class="popup-add__name" placeholder="Title">
+               <input type="text"  class="popup-add__descripcion" placeholder="Imagen URL">
+               <button class="popup-add__btn-close"></button>
+               <button class="popup-add__btn-save">Guardar</button>
+              </div>
+            </form>
+            <template id="card-template">
+              <div class="card">
+                <button class="card__btn-trash"></button>
+                <img src="https://media.istockphoto.com/id/1403726632/es/foto/vista-a%C3%A9rea-de-barranquilla-colombia-hacia-el-r%C3%ADo-al-atardecer.webp?b=1&s=170667a&w=0&k=20&c=j9ktr6I4pavezYP-f6VUtcNQOIM2xjal_pdLf6_1HCU=" class="card__image" alt="Imagen de un hermoso paisaje">
+                <h2 class="card__subtitle">Imagen por defecto</h2>
+                <button class="card__btn-love"></button>
+            </div>
+              </template>
+
             <script src="./scripts/script.js"></script>
         </main>
         <footer class="footer">
-          <h3 class="footer__copyright">&copy;2020 Mesto Russia</h3>
+          <h3 class="footer__copyright">&copy;2020 Pedro Torres Salgado</h3>
         </footer>
     </div>
   </body>

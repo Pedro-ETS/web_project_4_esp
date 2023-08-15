@@ -15,7 +15,19 @@ Permite adaptar un sitio o aplicación dependiendo de la presencia o el valor de
 4. JavaScript básico y trabajo con el DOM
 Estructura de árbol, mediante la cuál podemos acceder a ella y modificar los elementos del HTML desde Javascript, añadiendo nuevas etiquetas, modificando o eliminando otras, cambiando sus atributos HTML, añadiendo clases, cambiando el contenido de texto, etc...
 
-5. Figma 
+5. JavaScript arrays 
+Colección o agrupación de elementos en una misma variable, cada uno de ellos ubicado con referencia a la posición que ocupa dentro del mismo. Tanto la longitud como el tipo de los elementos de un array son variables.
+
+6. JavaScript funciones
+Bloque de código o un conjunto de instrucciones que realiza una tarea específica y que puede reutilizarse a voluntad. Por lo tanto, una función es uno de los building blocks fundamentales de JavaScript.
+
+7. JavaScript elementos de platilla template
+Es una plantilla de diseño que puedes utilizar para crear elementos. Si añades el elemento template al código HTML, su contenido no se mostrará en la página web a menos que lo agreges al DOM.
+
+8. JavaScript Objeto event
+El objeto Event es un objeto predefinido de JavaScript que almacena información sobre un evento y es pasado, para cada evento que tiene lugar, como argumento a la función o funciones que gestionan el evento.
+
+7. Figma 
 Figma es una plataforma de edición gráfica y diseño de interfaces.La función de acceso compartido permite que diferentes especialistas trabajen en un proyecto simultáneamente. Los copywriters crean y editan textos. Los programadores consultan la información del código. Los gerentes monitorean las etapas de desarrollo.
 
 

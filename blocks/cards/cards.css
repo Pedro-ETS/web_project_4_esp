@@ -1,18 +1,7 @@
 .cards{
   display: grid;
-  grid-template-columns: repeat(3,282px);
-  grid-template-rows: 361px 361px;
+  grid-template-columns: repeat(auto-fit,minmax(280px,280px));
   gap: 18px;
 }
-@media screen and (max-width:888px) {
-  .cards{
-  grid-template-columns: repeat(2,282px);
-  grid-template-rows: repeat(3,362px);
-  }
-  }
-  @media screen and (max-width:600px) {
-    .cards{
-    grid-template-columns: 282px;
-    grid-template-rows: repeat(6,362px);
-    }
-    }
+
+
