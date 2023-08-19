@@ -7,12 +7,9 @@ const btnClose = container.querySelector(".popup__btn-close");
 const btnCloseWindowAddCard = container.querySelector(".popup-add__btn-close");
 const btnAddCard = container.querySelector(".add-button");
 const btnSavePopupAdd = container.querySelector(".popup-add__btn-save");
-const btnLove = container.querySelector(".card__btn-love");
 const contentBigPicture = container.querySelector(".big-picture");
 const cardsTemp = container.querySelector("#card-template").content;
 const cards = container.querySelector(".cards");
-const card = document.querySelector(".card");
-const elements = document.querySelector(".elements");
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -46,14 +43,14 @@ function openWindowEditProfile() {
   const profSub = document.querySelector(".profile__subtitle");
   const profText = profileText.textContent;
   const subTitle = profSub.textContent;
-  const popupName = (document.querySelector(".popup__name").value = subTitle);
-  const textDescrip = (document.querySelector(".popup__descripcion").value =profText);
+  container.querySelector(".popup__name").value = subTitle;
+  container.querySelector(".popup__descripcion").value =profText;
 }
 const closeWindowEditProfile = () =>  popup.classList.remove("popup_opened");
 function openWindowAddCard (){
   popupAddCard.classList.add("popup-add_opened");
-  const popupAddName = (document.querySelector(".popup-add__name").value = "");
-  const popupAddLink = (document.querySelector(".popup-add__descripcion").value = "");
+  container.querySelector(".popup-add__name").value = "";
+  container.querySelector(".popup-add__descripcion").value = "";
 }
 const closeWindowsAddCard = () =>  popupAddCard.classList.remove("popup-add_opened");
 function saveWindowProfile() {
@@ -64,6 +61,15 @@ function saveWindowProfile() {
   profileSub.textContent = popupName;
   textCont.textContent = popuDescription;
   closeWindowEditProfile();
+}
+function openWindowContentImage(evt){
+  const link = evt.target.getAttribute("src");
+  const alt = evt.target.getAttribute("alt");
+  const city = alt.substring(9, alt.leng);
+  contentBigPicture.querySelector(".big-picture__image-normal").setAttribute("src", link);
+  contentBigPicture.querySelector(".big-picture__image-normal").setAttribute("alt", "imagen de "+city);
+  contentBigPicture.querySelector(".big-picture__lugar").textContent =city;
+  contentBigPicture.classList.add("big-picture_activate");
 }
 function addCardsStatic() {
   const fragment = document.createDocumentFragment();
@@ -80,13 +86,7 @@ function addCardsStatic() {
         parentNodo.remove();
       });
     cloneCardsTemp.querySelector(".card__image").addEventListener("click", function (evt) {
-        const link = evt.target.getAttribute("src");
-        const alt = evt.target.getAttribute("alt");
-        const city = alt.substring(9, alt.leng);
-        contentBigPicture.querySelector(".big-picture__image-normal").setAttribute("src", link);
-        contentBigPicture.querySelector(".big-picture__image-normal").setAttribute("alt", "imagen de "+city);
-        contentBigPicture.querySelector(".big-picture__lugar").textContent =city;
-        contentBigPicture.classList.add("big-picture_activate");
+      openWindowContentImage(evt);
       });
     contentBigPicture.querySelector(".big-picture__btn-close").addEventListener("click", function (evt) {
         contentBigPicture.classList.remove("big-picture_activate");
@@ -111,13 +111,7 @@ function addCardsDinamic() {
       res.remove();
     });
   cloneCardsTemp.querySelector(".card__image").addEventListener("click", function (evt) {
-      const link = evt.target.getAttribute("src");
-      const alt = evt.target.getAttribute("alt");
-      const city = alt.substring(9, alt.leng);
-      contentBigPicture.querySelector(".big-picture__image-normal").setAttribute("src", link);
-      contentBigPicture.querySelector(".big-picture__image-normal").setAttribute("alt", "imagen de "+city);
-      contentBigPicture.querySelector(".big-picture__lugar").textContent = city;
-      contentBigPicture.classList.toggle("big-picture_activate");
+   openWindowContentImage(evt);
     });
   contentBigPicture.querySelector(".big-picture__btn-close").addEventListener("click", function (evt) {
       contentBigPicture.classList.remove("big-picture_activate");
@@ -129,8 +123,8 @@ function addCardsDinamic() {
 popup.addEventListener("click", function (evt) {
   evt.preventDefault();
 });
-popup.addEventListener("keydown", (e) => {
-  if (e.keyCode === 13) {
+popup.addEventListener("keydown", function (e) {
+  if (e.code === "Enter") {
     saveWindowProfile();
   }
 });
