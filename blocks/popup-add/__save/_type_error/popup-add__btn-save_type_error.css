@@ -1,0 +1,7 @@
+.popup-add__btn-save_type_error{
+  border: 1px solid #000;
+  color: black;
+  background: #FFF;
+  opacity: .4;
+  cursor: default;
+}

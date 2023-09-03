@@ -35,24 +35,47 @@
                 </div>
               </div>
           </section>
-            <form class="popup">
+
+            <form class="popup" novalidate>
               <div class="popup__container">
                <h2 class="popup__title">Edit profile</h2>
-               <input type="text"  class="popup__name" placeholder="Nombre">
-               <input type="text"  class="popup__descripcion" placeholder="Acerca de mi">
-               <button class="popup__btn-close"></button>
-               <button class="popup__btn-save">Guardar</button>
+
+               <input id="popup-name"   class="popup__input" placeholder="Nombre" minlength="2" maxlength="40" required>
+
+               <span class="popup__input-error popup-name-error"></span>
+
+
+               <input id="popup-descripcion"  class="popup__input" placeholder="Acerca de mi" minlength="2"  maxlength="200" required>
+
+               <span class="popup__input-error popup-descripcion-error"></span>
+
+               <button type="button" class="popup__btn-close"></button>
+
+               <button id="popup-btn-save" type="submit" class="popup__btn-save" >Guardar</button>
               </div>
             </form>
-            <form class="popup-add">
+
+
+
+            <form class="popup-add" novalidate>
               <div class="popup-add__container">
                <h2 class="popup-add__title">New place</h2>
-               <input type="text"  class="popup-add__name" placeholder="Title" required>
-               <input type="text"  class="popup-add__descripcion" placeholder="Imagen URL" required>
-               <button class="popup-add__btn-close"></button>
-               <button class="popup-add__btn-save">Guardar</button>
+
+               <input  id="popup-add-name" class="popup-add__input"  placeholder="Title" minlength="2" maxlength="30"required>
+
+               <span class="popup-add__input-error popup-add-name-error"></span>
+
+               <input type="URL"  id="popup-add-descripcion"  class="popup-add__input" placeholder="Imagen URL" required>
+
+               <span class="popup-add__input-error popup-add-descripcion-error"></span>
+
+               <button type="button" class="popup-add__btn-close"></button>
+
+               <button id="popup-add-btn-save" type="submit" class="popup-add__btn-save" >Guardar</button>
               </div>
             </form>
+
+
             <template id="card-template">
               <div class="card">
                 <button class="card__btn-trash"></button>
@@ -67,5 +90,6 @@
         </footer>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
