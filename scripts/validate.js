@@ -1,40 +1,40 @@
-const assignErrorField = (typeForm,inputElement,errorElement,errorMessage) => {
+const assignErrorField = (typeForm,inputElement,errorElement,errorMessage,datos) => {
   if (typeForm) {
-    inputElement.classList.add("popup-add__input_type_error");
+    inputElement.classList.add(datos.inputErrorClassFormDos);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add("popup-add__input-error_active");
+    errorElement.classList.add(datos.errorClassFormDos);
   } else {
-    inputElement.classList.add("popup__input_type_error");
+    inputElement.classList.add(datos.inputErrorClassFormUno);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add("popup__input-error_active");
+    errorElement.classList.add(datos.errorClassFormUno);
   }
 };
-const removeErrorField = (typeFor, inputElement, errorElement) => {
+const removeErrorField = (typeFor, inputElement, errorElement,datos) => {
   if (typeFor) {
-    inputElement.classList.remove("popup-add__input_type_error");
-    errorElement.classList.remove("popup-add__input-error_active");
+    inputElement.classList.remove(datos.inputErrorClassFormDos);
+    errorElement.classList.remove(datos.errorClassFormDos);
     errorElement.textContent = "";
   } else {
-    inputElement.classList.remove("popup__input_type_error");
-    errorElement.classList.remove("popup__input-error_active");
+    inputElement.classList.remove(datos.inputErrorClassFormUno);
+    errorElement.classList.remove(datos.errorClassFormUno);
     errorElement.textContent = "";
   }
 };
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage,datos) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   const typeForm = formElement.className.includes("popup-add");
-  assignErrorField(typeForm, inputElement, errorElement, errorMessage);
+  assignErrorField(typeForm, inputElement, errorElement, errorMessage,datos);
 };
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement,datos) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   const typeForm = formElement.className.includes("popup-add");
-  removeErrorField(typeForm, inputElement, errorElement);
+  removeErrorField(typeForm, inputElement, errorElement,datos);
 };
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement,datos) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage,datos);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement,datos);
   }
 };
 const hasInvalidInput = (inputList) => {
@@ -42,45 +42,43 @@ const hasInvalidInput = (inputList) => {
     return !inputElement.validity.valid;
   });
 };
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement,datos) => {
   let getForm = buttonElement.getAttribute("id");
   if (hasInvalidInput(inputList)) {
     if (getForm.includes("popup-add")) {
-      buttonElement.classList.add("popup-add__btn-save_type_error");
+      buttonElement.classList.add(datos.inactiveButtonClassFormDos);
       buttonElement.disabled = true;
     } else {
-      buttonElement.classList.add("popup__btn-save_type_inactive");
+      buttonElement.classList.add(datos.inactiveButtonClassFormUno);
       buttonElement.disabled = true;
     }
   } else {
     if (getForm.includes("popup-add")) {
-      buttonElement.classList.remove("popup-add__btn-save_type_error");
+      buttonElement.classList.remove(datos.inactiveButtonClassFormDos);
       buttonElement.disabled = false;
     } else {
-      buttonElement.classList.remove("popup__btn-save_type_inactive");
+      buttonElement.classList.remove(datos.inactiveButtonClassFormUno);
       buttonElement.disabled = false;
     }
   }
 };
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
-  const inputListt = Array.from(
-    formElement.querySelectorAll(".popup-add__input")
-  );
-  const inputsForms = inputList.concat(inputListt);
+const setEventListeners = (formElement,datos) => {
+  const inputListUno = Array.from(formElement.querySelectorAll(datos.inputSelectorFormUno));
+  const inputListDos = Array.from(formElement.querySelectorAll(datos.inputSelectorFormDos));
+  const inputsForms = inputListUno.concat(inputListDos);
   const buttonElement = formElement.querySelector("button[type=submit]");
-  if (buttonElement.className === "popup-add__btn-save") {
-    toggleButtonState(inputsForms, buttonElement, formElement);
+  if ( `.${buttonElement.className}`=== datos.submitButtonSelectorFormDos) {
+    toggleButtonState(inputsForms, buttonElement,datos);
   }
   inputsForms.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputsForms, buttonElement);
+      checkInputValidity(formElement, inputElement,datos);
+      toggleButtonState(inputsForms, buttonElement,datos);
     });
   });
 };
-const enableValidation = () => {
-  const formList = Array.from(container.getElementsByTagName("form"));
+const enableValidation = (datos) => {
+  const formList = Array.from(container.getElementsByTagName(datos.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
@@ -90,7 +88,20 @@ const enableValidation = () => {
         addCardsDinamic();
       }
     });
-    setEventListeners(formElement);
+    setEventListeners(formElement, datos);
   });
 };
-enableValidation();
+const datos = {
+  formSelector: "form",
+  inputSelectorFormUno: ".popup__input",
+  inputSelectorFormDos: ".popup-add__input",
+  submitButtonSelectorFormUno: ".popup__btn-save",
+  submitButtonSelectorFormDos: ".popup-add__btn-save",
+  inactiveButtonClassFormUno: "popup__btn-save_disabled",
+  inactiveButtonClassFormDos: "popup-add__btn-save_disabled",
+  inputErrorClassFormUno: "popup__input_type_error",
+  inputErrorDosClassFormDos: "popup-add__input_type_error",
+  errorClassFormUno: "popup__error_visible",
+  errorClassFormDos: "popup-add__error_visible",
+};
+enableValidation(datos);

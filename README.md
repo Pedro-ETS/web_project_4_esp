@@ -12,24 +12,26 @@ CSS Grid Layout es un sistema que nos permite organizar los elementos a lo largo
 3. Consulta de medios (media queries)
 Permite adaptar un sitio o aplicación dependiendo de la presencia o el valor de varias características y parámetros del dispositivo. Las Media queries permiten aplicar estilos CSS según el tipo general de un dispositivo (como impresión o pantalla) u otras características como la resolución de la pantalla o el ancho del viewport del navegador.
 
-4. JavaScript básico y trabajo con el DOM
-Estructura de árbol, mediante la cuál podemos acceder a ella y modificar los elementos del HTML desde Javascript, añadiendo nuevas etiquetas, modificando o eliminando otras, cambiando sus atributos HTML, añadiendo clases, cambiando el contenido de texto, etc...
-
-5. JavaScript arrays 
-Colección o agrupación de elementos en una misma variable, cada uno de ellos ubicado con referencia a la posición que ocupa dentro del mismo. Tanto la longitud como el tipo de los elementos de un array son variables.
-
-6. JavaScript funciones
-Bloque de código o un conjunto de instrucciones que realiza una tarea específica y que puede reutilizarse a voluntad. Por lo tanto, una función es uno de los building blocks fundamentales de JavaScript.
-
-7. JavaScript elementos de platilla template
-Es una plantilla de diseño que puedes utilizar para crear elementos. Si añades el elemento template al código HTML, su contenido no se mostrará en la página web a menos que lo agreges al DOM.
-
-8. JavaScript Objeto event
-El objeto Event es un objeto predefinido de JavaScript que almacena información sobre un evento y es pasado, para cada evento que tiene lugar, como argumento a la función o funciones que gestionan el evento.
-
-7. Figma 
+4. Figma 
 Figma es una plataforma de edición gráfica y diseño de interfaces.La función de acceso compartido permite que diferentes especialistas trabajen en un proyecto simultáneamente. Los copywriters crean y editan textos. Los programadores consultan la información del código. Los gerentes monitorean las etapas de desarrollo.
 
+5. JavaScript básico y trabajo con el DOM
+Estructura de árbol, mediante la cuál podemos acceder a ella y modificar los elementos del HTML desde Javascript, añadiendo nuevas etiquetas, modificando o eliminando otras, cambiando sus atributos HTML, añadiendo clases, cambiando el contenido de texto, etc...
+
+6. JavaScript arrays 
+Colección o agrupación de elementos en una misma variable, cada uno de ellos ubicado con referencia a la posición que ocupa dentro del mismo. Tanto la longitud como el tipo de los elementos de un array son variables.
+
+7. JavaScript funciones
+Bloque de código o un conjunto de instrucciones que realiza una tarea específica y que puede reutilizarse a voluntad. Por lo tanto, una función es uno de los building blocks fundamentales de JavaScript.
+
+8. JavaScript elementos de platilla template
+Es una plantilla de diseño que puedes utilizar para crear elementos. Si añades el elemento template al código HTML, su contenido no se mostrará en la página web a menos que lo agreges al DOM.
+
+9. JavaScript Objeto event
+El objeto Event es un objeto predefinido de JavaScript que almacena información sobre un evento y es pasado, para cada evento que tiene lugar, como argumento a la función o funciones que gestionan el evento.
+
+10.- JavaScript Manejo de eventos
+El manejo de eventos en el desarrollo de Software es muy importante, debido a que mediante estos el usuario desencadena acciones al momento de utilizar una aplicación. Cuando hacemos uso de JavaScript tenemos la posibilidad de capturar o programar los eventos que se desencadenan (suceden) a nuestros elementos HTML en nuestro proyecto.
 
 **Figma**
 * [Enlace al proyecto en Figma](https://www.figma.com/file/LDMgqWesKpQkIwhOfEBuTS/WEB%2C-Sprint-5%3A-Around-The-U.S.-%7C-desktop-%2B-mobile?node-id=0%3A1)
