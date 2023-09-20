@@ -30,8 +30,15 @@ Es una plantilla de diseño que puedes utilizar para crear elementos. Si añades
 9. JavaScript Objeto event
 El objeto Event es un objeto predefinido de JavaScript que almacena información sobre un evento y es pasado, para cada evento que tiene lugar, como argumento a la función o funciones que gestionan el evento.
 
-10.- JavaScript Manejo de eventos
+10. JavaScript Manejo de eventos
 El manejo de eventos en el desarrollo de Software es muy importante, debido a que mediante estos el usuario desencadena acciones al momento de utilizar una aplicación. Cuando hacemos uso de JavaScript tenemos la posibilidad de capturar o programar los eventos que se desencadenan (suceden) a nuestros elementos HTML en nuestro proyecto.
+
+11. Programacion orientada a objetos
+Estilo de programación muy utilizado, donde creas y utilizas estructuras de datos, lo que facilita considerablemente la forma de planificar y preparar el código de tus programas o aplicaciones. Es un paradigma de la programación en el que se crean objetos para la manipulacón de datos y donde, por lo general, cada objeto ofrece una funcionalidad especial
+
+12. Modulos
+Un módulo es un archivo de JavaScript que agrupa funciones, clases, variables que luego pueden ser exportadas y utilizadas en otras partes de nuestra aplicación. Un módulo permite ocultar funcionalidad del mismo y solo exportar aquello para lo que ha sido implementado.
+Esta característica agregada a JavaScript nos permite implementar programas mucho más ordenados y facilita la reutilización del código
 
 **Figma**
 * [Enlace al proyecto en Figma](https://www.figma.com/file/LDMgqWesKpQkIwhOfEBuTS/WEB%2C-Sprint-5%3A-Around-The-U.S.-%7C-desktop-%2B-mobile?node-id=0%3A1)

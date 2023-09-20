@@ -46,7 +46,7 @@
                <button id="popup-btn-save" type="submit" class="popup__btn-save" >Guardar</button>
               </div>
             </form>
-            <form name="popupadd" class="popup-add" novalidate>
+            <form  name="popupadd" class="popup-add" novalidate>
               <div class="popup-add__container">
                <h2 class="popup-add__title">New place</h2>
                <input  id="popup-add-name" class="popup-add__input"  placeholder="Title" minlength="2" maxlength="30"required>
@@ -57,7 +57,7 @@
                <button id="popup-add-btn-save" type="submit" class="popup-add__btn-save" >Guardar</button>
               </div>
             </form>
-            <template id="card-template">
+            <template class="card-template">
               <div class="card">
                 <button class="card__btn-trash"></button>
                 <img src="https://media.istockphoto.com/id/1403726632/es/foto/vista-a%C3%A9rea-de-barranquilla-colombia-hacia-el-r%C3%ADo-al-atardecer.webp?b=1&s=170667a&w=0&k=20&c=j9ktr6I4pavezYP-f6VUtcNQOIM2xjal_pdLf6_1HCU=" class="card__image" alt="Imagen de un hermoso paisaje">
@@ -70,7 +70,9 @@
           <h3 class="footer__copyright">&copy;2023 Pedro Torres Salgado</h3>
         </footer>
     </div>
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/validate.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./scripts/Card.js"></script>
+    <script type="module" src="./scripts/FormValidator.js"></script>
+    <script type="module" src="./scripts/utils.js"></script>
   </body>
 </html>
