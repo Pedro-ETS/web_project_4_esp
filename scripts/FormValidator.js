@@ -60,10 +60,6 @@ export default class FormValidator {
     });
   }
   enableValidation() {
-    this._element = document.querySelector(this._formSelector);
-    this._element.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-    });
     this._setEventListeners();
   }
 }

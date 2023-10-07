@@ -1,90 +1,89 @@
 import Card from "../scripts/Card.js";
 import FormValidator from "../scripts/FormValidator.js";
-import {openWindowEditProfile,openWindowAddCard,closeWindowEditProfile,closeWindowsAddCard,saveWindowProfile} from "../scripts/utils.js";
+import {
+  initialCards,
+  container,
+  btnEditarProfile,
+  popup,
+  popupAddCard,
+  btnClose,
+  btnCloseWindowAddCard,
+  btnAddCard,
+  contentBigPicture,
+  cards,
+  elements,
+  formPopupAdd,
+  elementPopupName,
+  elementPopupJob,
+  inputSelectorsPopup,
+  popupFormSelectorsToValidate
+} from "../utils/constants.js";
+import Section from "../components/Section.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 
-const container = document.querySelector(".container");
-const btnEditarProfile = container.querySelector(".edit-button_action_add");
-const popup = container.querySelector(".popup");
-const popupAddCard = container.querySelector(".popup-add");
-const btnClose = container.querySelector(".popup__btn-close");
-const btnCloseWindowAddCard = container.querySelector(".popup-add__btn-close");
-const btnAddCard = container.querySelector(".add-button");
-const contentBigPicture = container.querySelector(".big-picture");
-const cards = container.querySelector(".cards");
-const elements = container.querySelector(".elements");
-const formPopupAdd = document.forms.popupadd;
-const initialCards = [
+//Instancio y visualizo las 6 primeras tarjetas
+const insertCard = new Section(
   {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
+    data: initialCards,
+    renderer: (item) => {
+      const card = new Card(item, ".card-template");
+      const cardElement = card.generateCard();
+      insertCard.addItem(cardElement);
+    },
   },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
-  },
+  cards
+);
+insertCard.renderItems(); //metodo para renderizar las tarjetas
 
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
-  },
-];
-function addCardsStatic() {
-  const fragment = document.createDocumentFragment();
-  initialCards.forEach((element) => {
-    const card = new Card(element, ".card-template");
-    const cardElement = card.generateCard();
-    fragment.appendChild(cardElement);
-  });
-  cards.appendChild(fragment);
-}
-addCardsStatic();
+//instancio y agrego un tarjeta mediante el formulario agregar tarjeta
+const openPopupCard = new PopupWithForm("popup-add", (formData) => {
+  console.log(formData);
 
-function addCardsDinamic() {
-  const popupName = document.querySelector("#popup-add-name").value;
-  const popuDescription = document.querySelector("#popup-add-descripcion").value;
-  const element = {
-    name: popupName,
-    link: popuDescription,
-  };
-  const card = new Card(element, ".card-template");
-  const cardElement = card.generateCard();
-  cards.prepend(cardElement);
-  initialCards.unshift({ name: popupName, link: popuDescription });
-}
-popupAddCard.addEventListener("submit", function () {
-addCardsDinamic();
-closeWindowsAddCard();
+  initialCards.push(formData);
+
+  console.log(initialCards);
+
+  const insertCard = new Section(
+    {
+      data: initialCards,
+      renderer: (item) => {
+        const card = new Card(item, ".card-template");
+        const cardElement = card.generateCard();
+        insertCard.addItem(cardElement);
+      },
+    },
+    cards
+  );
+  insertCard.renderItems();
 });
-popup.addEventListener("submit", saveWindowProfile);
 
-btnClose.addEventListener("click", closeWindowEditProfile);
-btnCloseWindowAddCard.addEventListener("click", closeWindowsAddCard);
 
-btnEditarProfile.addEventListener("click", function () {
-  openWindowEditProfile();
-  const datos = {
-    inputSelectorForm: ".popup__input",
-    submitButtonSelectorForm: ".popup__btn-save",
-    inactiveButtonClassForm: "popup__btn-save_disabled",
-    inputErrorClassForm: "popup__input_type_error",
-    errorClassForm: "popup__error_visible",
-  };
-  const form = new FormValidator(datos, ".popup");
+const userInfo = new UserInfo(inputSelectorsPopup); //instanciamos
+
+
+const openPopupProfile = new PopupWithForm("popup", (formData) => {
+userInfo.setUserInfo(formData);
+});
+
+
+btnEditarProfile.addEventListener("click", function () {// abre form profile
+
+const getUserData=userInfo.getUserInfo();
+
+elementPopupName.value=getUserData.name;
+elementPopupJob.value=getUserData.job;
+
+  openPopupProfile.open();
+
+  const form = new FormValidator(popupFormSelectorsToValidate, ".popup");
+
   form.enableValidation();
 });
+
 btnAddCard.addEventListener("click", function () {
+  openPopupCard.open();
+
   const datos = {
     inputSelectorForm: ".popup-add__input",
     submitButtonSelectorForm: ".popup-add__btn-save",
@@ -94,12 +93,11 @@ btnAddCard.addEventListener("click", function () {
   };
   const form = new FormValidator(datos, ".popup-add");
   form.enableValidation();
-  openWindowAddCard();
 });
+
 export {
   container,
   elements,
-  addCardsDinamic,
   cards,
   contentBigPicture,
   btnClose,
@@ -108,5 +106,5 @@ export {
   btnAddCard,
   popupAddCard,
   popup,
-  formPopupAdd
+  formPopupAdd,
 };
