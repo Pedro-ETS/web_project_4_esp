@@ -46,3 +46,10 @@ export const popupFormSelectorsToValidate = {
   inputErrorClassForm: "popup__input_type_error",
   errorClassForm: "popup__error_visible",
 };
+export const popupAddFormSelectorsToValidate = {
+  inputSelectorForm: ".popup-add__input",
+  submitButtonSelectorForm: ".popup-add__btn-save",
+  inactiveButtonClassForm: "popup-add__btn-save_disabled",
+  inputErrorClassForm: "popup-add__input_type_error",
+  errorClassForm: "popup-add__error_visible",
+};

@@ -2,7 +2,7 @@
   width: 21px;
   height: 19px;
   margin-right: 12px;
-  background-image: url("../../../images/Group.svg");
+  background-image: url("../../../src/images/Group.svg");
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -14,5 +14,5 @@
 .card__btn-love_activate {
   transform: scale(1.2, 1.2);
   transition: transform 1.5s ease-out;
-  background-image: url("../../../images/Like.svg");
+  background-image: url("../../../src/images/Like.svg");
 }

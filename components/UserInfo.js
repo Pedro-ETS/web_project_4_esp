@@ -3,16 +3,14 @@ export default class UserInfo {
     this.nameElement = document.querySelector(nameSelector);
     this.jobElement = document.querySelector(jobSelector);
   }
-
-  getUserInfo() {// este metodo obtiene datos del html desde el princpio
+  getUserInfo() {
     const userInfo = {
-      name: this.nameElement.textContent, //extraemmos el contenido de profileInput nombre
-      job: this.jobElement.textContent, //extraemmos el contenido de profileInput trabajo
+      name: this.nameElement.textContent,
+      job: this.jobElement.textContent,
     };
     return userInfo;
   }
-
-  setUserInfo(newUserInfo) {//mete datos al html
+  setUserInfo(newUserInfo) {
     this.nameElement.textContent = newUserInfo.name;
     this.jobElement.textContent = newUserInfo.job;
   }

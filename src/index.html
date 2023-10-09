@@ -6,17 +6,16 @@
     <meta name="description" content="[pedro]'s Portfolio at Practicum">
     <meta name="keywords" content="Trabajo con el Dom">
     <meta name="author" content="Pedro Torres Salgado">
-    <link rel="stylesheet" href="./pages/index.css">
-    <title>Sprint 5</title>
+    <title>Sprint 9</title>
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img src="./images/logo.png" alt="Logo de empresa practicum">
+        <img src="<%=require('./images/logo.png')%>" alt="Logo de empresa practicum">
       </header>
         <main class="container">
           <section class="profile">
-            <img src="./images/image.svg" class="profile__image" alt="Imagen de avatar">
+            <img src="<%=require('./images/image.svg')%>" class= profile__image alt="Imagen de avatar">
             <div class="profile__info">
               <h2 class="profile__subtitle">Jacques Cousteau</h2>
               <button class="edit-button edit-button_action_add"></button>
@@ -26,7 +25,6 @@
           </section>
           <section class="elements">
               <div class="cards">
-
               </div>
               <div class="big-picture">
                 <div class="big-picture__content">
@@ -50,9 +48,9 @@
             <form  name="popupadd" class="popup-add" novalidate>
               <div class="popup-add__container">
                <h2 class="popup-add__title">New place</h2>
-               <input  name="name" id="popup-add-name" class="popup-add__input  popup__input"  placeholder="Title" minlength="2" maxlength="30"required>
+               <input  name="name" id="popup-add-name" class="popup-add__input"  placeholder="Title" minlength="2" maxlength="30"required>
                <span class="popup-add__input-error popup-add-name-error"></span>
-               <input name="link" type="url"  id="popup-add-descripcion"  class="popup-add__input popup__input" placeholder="Imagen URL" required>
+               <input name="link" type="url"  id="popup-add-descripcion"  class="popup-add__input" placeholder="Imagen URL" required>
                <span class="popup-add__input-error popup-add-descripcion-error"></span>
                <button type="button" class="popup-add__btn-close"></button>
                <button id="popup-add-btn-save" type="submit" class="popup-add__btn-save" >Guardar</button>
@@ -71,9 +69,5 @@
           <h3 class="footer__copyright">&copy;2023 Pedro Torres Salgado</h3>
         </footer>
     </div>
-    <script type="module" src="./scripts/index.js"></script>
-    <script type="module" src="./scripts/Card.js"></script>
-    <script type="module" src="./scripts/FormValidator.js"></script>
-    <script type="module" src="./scripts/utils.js"></script>
   </body>
 </html>

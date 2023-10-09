@@ -40,10 +40,20 @@ Estilo de programación muy utilizado, donde creas y utilizas estructuras de dat
 Un módulo es un archivo de JavaScript que agrupa funciones, clases, variables que luego pueden ser exportadas y utilizadas en otras partes de nuestra aplicación. Un módulo permite ocultar funcionalidad del mismo y solo exportar aquello para lo que ha sido implementado.
 Esta característica agregada a JavaScript nos permite implementar programas mucho más ordenados y facilita la reutilización del código
 
+13. Destructuracion
+Esta nueva sintaxis, introducida con ES6, puede hacer que nuestro código sea notablemente más corto, más fácil de leer y más limpio desde del punto de vista estético. Es una expresión de JavaScript que permite desempacar valores de arreglos, propiedades de objetos o argumentos en distintas variables.
+
+14. empaquetador de modulos (webpack)
+Webpack es un empaquetador de módulos, es capaz de crear los bundles de código Javascript, es decir, los paquetes de código necesarios para poder llevar a producción un proyecto, realizando la transpilación del código y el empaquetado de los módulos en uno o varios archivos compactados, minimizados y por tanto optimizados.
+
+15. Babel
+Babel es un "compilador" (o transpilador) para JavaScript. Básicamente permite transformar código escrito con las últimas y novedosas características de JavaScript y transformarlo en un código que sea entendido por navegadores más antiguos.
+
+
 **Figma**
 * [Enlace al proyecto en Figma](https://www.figma.com/file/LDMgqWesKpQkIwhOfEBuTS/WEB%2C-Sprint-5%3A-Around-The-U.S.-%7C-desktop-%2B-mobile?node-id=0%3A1)
 
 **Pagina Web**
-* [Proyecto de GiitHub page](https://pedro-ets.github.io/web_project_4_esp/)
+* [Proyecto de GiitHub page](file:///C:/Users/pedro/Desktop/Practicum/Proyecto_4/web_project_4_esp/dist/index.html)
 
 
