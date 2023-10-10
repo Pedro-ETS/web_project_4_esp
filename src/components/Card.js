@@ -1,4 +1,4 @@
-import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithImage from "./PopupWithImage.js";
 export default class Card {
   constructor(element, cardSelector) {
     this._name = element.name;

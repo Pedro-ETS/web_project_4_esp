@@ -1,7 +1,7 @@
 .card__btn-trash {
   width: 18px;
   height: 19.3px;
-  background-image: url("../../../src/images/trash.svg");
+  background-image: url("../../../../../images/trash.svg");
   background-color: transparent;
   position: absolute;
   top: 18px;
