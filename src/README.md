@@ -54,6 +54,6 @@ Babel es un "compilador" (o transpilador) para JavaScript. Básicamente permite 
 * [Enlace al proyecto en Figma](https://www.figma.com/file/LDMgqWesKpQkIwhOfEBuTS/WEB%2C-Sprint-5%3A-Around-The-U.S.-%7C-desktop-%2B-mobile?node-id=0%3A1)
 
 **Pagina Web**
-* [Proyecto de GiitHub page](file:///C:/Users/pedro/Desktop/Practicum/Proyecto_4/web_project_4_esp/dist/index.html)
+* [Proyecto de Netlify](https://phenomenal-bublanina-6495af.netlify.app/)
 
 
