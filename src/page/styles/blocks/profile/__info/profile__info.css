@@ -2,6 +2,7 @@
   width: 427px;
   display: flex;
   flex-wrap: wrap;
+  justify-self: flex-end;
 }
 @media screen and (max-width: 436px) {
   .profile__info {

@@ -6,12 +6,12 @@ export default class UserInfo {
   getUserInfo() {
     const userInfo = {
       name: this.nameElement.textContent,
-      job: this.jobElement.textContent,
+      about: this.jobElement.textContent,
     };
     return userInfo;
   }
   setUserInfo(newUserInfo) {
     this.nameElement.textContent = newUserInfo.name;
-    this.jobElement.textContent = newUserInfo.job;
+    this.jobElement.textContent = newUserInfo.about;
   }
 }

@@ -10,6 +10,7 @@ export default class FormValidator {
   _showInputError(formElement, inputElement, errorMessage) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClassForm);
+    errorElement.classList.add(this._errorClassForm);
     errorElement.textContent = errorMessage;
   }
   _hideInputError(formElement, inputElement) {
@@ -51,7 +52,10 @@ export default class FormValidator {
     const buttonElement = formElement.querySelector("button[type=submit]");
     if (`.${buttonElement.className}` === ".popup-add__btn-save") {
       this._toggleButtonState(inputList, buttonElement);
+    }else if(`.${buttonElement.className}` === ".popup-edit-img__btn-save") {
+      this._toggleButtonState(inputList, buttonElement);
     }
+
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", (evt) => {
         this._checkInputValidity(formElement, inputElement);

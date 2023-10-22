@@ -1,4 +1,5 @@
 import PopupWithImage from "./PopupWithImage.js";
+import PopupWithForm from "./PopupWithForm.js";
 import {initialCards} from "../utils/constants.js";
 export default class Card {
   constructor(element, cardSelector) {
@@ -26,11 +27,13 @@ export default class Card {
     evt.target.classList.toggle("card__btn-love_activate");
   }
   _trashCard(evt) {
-    let parentNodo = evt.target.parentNode;
-    parentNodo.remove();
-    const name=this._name;
-    const indexCard=initialCards.indexOf(name);
-   initialCards.splice(indexCard, 1);
+    const popupConfirmDeletion = new PopupWithForm("popup-confirm-deletion", (formData) => {});
+    popupConfirmDeletion.open();
+  //   let parentNodo = evt.target.parentNode;
+  //   parentNodo.remove();
+  //   const name=this._name;
+  //   const indexCard=initialCards.indexOf(name);
+  //  initialCards.splice(indexCard, 1);
   }
   _displayContainerImage(evt) {
     openWindowContentImage(evt);
@@ -47,7 +50,6 @@ export default class Card {
         this._likeImage(evt);
       } else if (evt.target.classList.contains("card__btn-trash")) {
         this._trashCard(evt);
-
       } else if (evt.target.classList.contains("card__image")) {
         this.handleCardClick(evt);
       }
