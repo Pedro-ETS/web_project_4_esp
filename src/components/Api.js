@@ -6,7 +6,6 @@ export default class Api {
     this._contentType=headers["Content-Type"];
     this._datos = datos;
   }
-
   getInitialCards() {
     // ...
     return fetch(this._url, {
@@ -21,58 +20,6 @@ export default class Api {
       // si el servidor devuelve un error, rechaza el promise
       return Promise.reject(`Error: ${res.status}`);
     });
-  }
-  getUser(){
-    return fetch(this._url, {
-      headers: {
-        authorization: this._authorization,
-        "Content-Type": this._contentType
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // si el servidor devuelve un error, rechaza el promise
-      return Promise.reject(`Error: ${res.status}`);
-    });
-  }
-  modifyUser(){
-    return fetch(this._url, {
-      method: "PATCH",
-      body: JSON.stringify({
-        about: this._datos.about,
-        name: this._datos.name
-      }),
-      headers: {
-        authorization: this._authorization,
-        "Content-Type": this._contentType
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // si el servidor devuelve un error, rechaza el promise
-      return Promise.reject(`Error: ${res.status}`);
-    });
-  }
-  modifyImgUser(){// modifiar imagen
-    return fetch(this._url, {
-      method: "PATCH",
-      body: JSON.stringify({
-        avatar: this._datos.avatar,
-      }),
-      headers: {
-        authorization: this._authorization,
-        "Content-Type": this._contentType
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // si el servidor devuelve un error, rechaza el promise
-      return Promise.reject(`Error: ${res.status}`);
-    });
-
   }
   setCard(){
     return fetch(this._url, {
@@ -95,7 +42,77 @@ export default class Api {
 
   }
 
-  // otros métodos para trabajar con la API
+  deleteCard(){
+    return fetch(this._url, {
+      method: "DELETE",
+      headers: {
+        authorization: this._authorization,
+        "Content-Type": this._contentType
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // si el servidor devuelve un error, rechaza el promise
+      return Promise.reject(`Error: ${res.status}`);
+    })
+
+
+  }
+
+  getUser(){
+    return fetch(this._url, {
+      headers: {
+        authorization: this._authorization,
+        "Content-Type": this._contentType
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // si el servidor devuelve un error, rechaza el promise
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+
+  modifyUser(){
+    return fetch(this._url, {
+      method: "PATCH",
+      body: JSON.stringify({
+        about: this._datos.about,
+        name: this._datos.name
+      }),
+      headers: {
+        authorization: this._authorization,
+        "Content-Type": this._contentType
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // si el servidor devuelve un error, rechaza el promise
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+
+  modifyImgUser(){// modifiar imagen
+    return fetch(this._url, {
+      method: "PATCH",
+      body: JSON.stringify({
+        avatar: this._datos.avatar,
+      }),
+      headers: {
+        authorization: this._authorization,
+        "Content-Type": this._contentType
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // si el servidor devuelve un error, rechaza el promise
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
 }
 
 

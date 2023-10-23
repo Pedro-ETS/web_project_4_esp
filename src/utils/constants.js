@@ -6,7 +6,7 @@ export const btnClose = container.querySelector(".popup__btn-close");
 export const btnCloseWindowAddCard = container.querySelector(".popup-add__btn-close");
 export const btnAddCard = container.querySelector(".add-button");
 export const contentBigPicture = container.querySelector(".big-picture");
-export const cards = ".cards"; 
+export const cards = ".cards";
 export const elements = container.querySelector(".elements");
 export const formPopupAdd = document.forms.popupadd;
 export const elementPopupName = document.querySelector("#popup-name");
@@ -19,7 +19,7 @@ export const popupEditImg=container.querySelector(".popup-edit-img");
 export const elementNameProfile=container.querySelector(".profile__subtitle");
 export const elementJobProfile=container.querySelector(".profile__text");
 export const elementProfileContImg=container.querySelector(".profile__content");
-
+export const card=container.querySelector(".card");
 export const popupFormSelectorsToValidate = {
   inputSelectorForm: ".popup__input",
   submitButtonSelectorForm: ".popup__btn-save",

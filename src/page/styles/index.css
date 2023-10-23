@@ -48,11 +48,12 @@
 @import url("./blocks/popup-edit-Img/__title/popup-edit-img__title.css");
 @import url("./blocks/popup-edit-Img/__input/popup-edit-img__input.css");
 @import url("./blocks/popup-edit-Img/__save/popup-edit-img__btn-save.css");
+@import url("./blocks/popup-edit-Img/__save/_disabled/popup-edit-img__btn-save_disabled.css");
 @import url("./blocks/popup-edit-Img/__input-error/popup-edit-img__input-error.css");
 @import url("./blocks/popup-edit-Img/__btn-close/popup-edit-img__btn-close.css");
 @import url("./blocks/popup-confirm-deletion/popup-confirm-deletion.css");
 @import url("./blocks/popup-confirm-deletion/__container/popup-confirm-deletion__container.css");
 @import url("./blocks/popup-confirm-deletion/__title/popup-confirm-deletion__title.css");
-@import url("./blocks/popup-confirm-deletion/btn__save/popup-confirm-deletion__btn-save.css");
 @import url("./blocks/popup-confirm-deletion/__btn-close/popup-confirm-deletion__btn-close.css");
+@import url("./blocks/popup-confirm-deletion/__btn-delete/popup-confirm-deletion__btn-delete.css");
 
