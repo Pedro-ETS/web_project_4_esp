@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-
+import {renderLoading} from "../utils/constants.js";
 export default class PopupWithForm extends Popup {
   constructor(selectPopup, submitCallback) {
     super(selectPopup);
@@ -23,11 +23,14 @@ export default class PopupWithForm extends Popup {
     const object = this._getInputValues();
     this._submitCallback(object);
   }
-
   submitHandler = (event) => {
     event.preventDefault();
+    if(this._popupClass==="popup-confirm-deletion"){
+      renderLoading(true,`.${this._popupClass}__btn-delete`);
+    }else{
+      renderLoading(true,`.${this._popupClass}__btn-save`);
+    }
     this.sendObject();
-    this.close();
   };
   setEventListeners() {
     super.setEventListeners();

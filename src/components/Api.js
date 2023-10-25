@@ -1,13 +1,11 @@
 export default class Api {
   constructor({baseUrl,headers,datos}) {
-    // cuerpo del constructor
     this._url = baseUrl;
     this._authorization = headers.authorization;
     this._contentType=headers["Content-Type"];
     this._datos = datos;
   }
   getInitialCards() {
-    // ...
     return fetch(this._url, {
       headers: {
         authorization: this._authorization,
@@ -17,7 +15,6 @@ export default class Api {
       if (res.ok) {
         return res.json();
       }
-      // si el servidor devuelve un error, rechaza el promise
       return Promise.reject(`Error: ${res.status}`);
     });
   }
@@ -39,7 +36,21 @@ export default class Api {
       // si el servidor devuelve un error, rechaza el promise
       return Promise.reject(`Error: ${res.status}`);
     })
-
+  }
+  likeCard(){
+    return fetch(this._url, {
+      method: "PUT",
+      headers: {
+        authorization: this._authorization,
+        "Content-Type": this._contentType
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // si el servidor devuelve un error, rechaza el promise
+      return Promise.reject(`Error: ${res.status}`);
+    })
   }
 
   deleteCard(){
@@ -56,10 +67,7 @@ export default class Api {
       // si el servidor devuelve un error, rechaza el promise
       return Promise.reject(`Error: ${res.status}`);
     })
-
-
   }
-
   getUser(){
     return fetch(this._url, {
       headers: {
@@ -74,7 +82,6 @@ export default class Api {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
-
   modifyUser(){
     return fetch(this._url, {
       method: "PATCH",

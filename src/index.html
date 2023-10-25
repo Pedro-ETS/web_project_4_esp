@@ -52,7 +52,7 @@
             <form  name="popupadd" class="popup-add" novalidate>
               <div class="popup-add__container">
                <h2 class="popup-add__title">New place</h2>
-               <input  name="name" id="popup-add-name" class="popup-add__input"  placeholder="Title" minlength="2" maxlength="30"required>
+               <input  name="name" id="popup-add-name" class="popup-add__input"  placeholder="Title" minlength="2" required>
                <span class="popup-add__input-error popup-add-name-error"></span>
                <input name="link" type="url"  id="popup-add-descripcion"  class="popup-add__input" placeholder="Imagen URL" required>
                <span class="popup-add__input-error popup-add-descripcion-error"></span>
@@ -60,7 +60,6 @@
                <button id="popup-add-btn-save" type="submit" class="popup-add__btn-save" >Guardar</button>
               </div>
             </form>
-
             <form  class="popup-edit-img" novalidate>
               <div class="popup-edit-img__container">
                 <h2 class="popup-edit-img__title">Cambiar foto de perfil</h2>
@@ -75,7 +74,6 @@
                 <h2 class="popup-confirm-deletion__title">¿Estás seguro?</h2>
                 <button type="button" class="popup-confirm-deletion__btn-close"></button>
                 <button  type="submit" class="popup-confirm-deletion__btn-delete" >si</button>
-
               </div>
             </form>
             <template class="card-template">
@@ -83,7 +81,10 @@
                 <button data-user-id="" class="card__btn-trash"></button>
                 <img id-card-img="" src="https://media.istockphoto.com/id/1403726632/es/foto/vista-a%C3%A9rea-de-barranquilla-colombia-hacia-el-r%C3%ADo-al-atardecer.webp?b=1&s=170667a&w=0&k=20&c=j9ktr6I4pavezYP-f6VUtcNQOIM2xjal_pdLf6_1HCU=" class="card__image" alt="Imagen de un hermoso paisaje">
                 <h2 class="card__subtitle">Imagen por defecto</h2>
-                <button class="card__btn-love"></button>
+                <div class="card__content">
+                  <button class="card__btn-love"></button>
+                  <h3 class="card__like-number ">0</h3>
+                </div>
               </div>
             </template>
         </main>

@@ -18,7 +18,7 @@ import {
   btnEditImgProfile,
   elementNameProfile,
   elementJobProfile,
-  card,
+  renderLoading
 } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -38,7 +38,6 @@ const uownUser = new Api({
     "Content-Type": "application/json",
   },
 });
-
 uownUser.getUser()
   .then((userData) => {
     elementNameProfile.textContent = userData.name;
@@ -55,13 +54,15 @@ function addCards(initialCards) {
     {
       data: initialCards,
       renderer: (item) => {
-        const card = new Card(item, ".card-template");
+        const card = new Card (item,".card-template");
         const cardElement = card.generateCard();
-        const idUser = cardElement
-          .querySelector(".card__btn-trash")
-          .getAttribute("data-user-id");
+        const idUser = cardElement.querySelector(".card__btn-trash").getAttribute("data-user-id");
+        const likes = cardElement.querySelector(".card__like-number").textContent;
         if (idUser !== "dcf490f1110c4236836c8193") {
           cardElement.querySelector(".card__btn-trash").style.display = "none";
+        }
+        if (likes==0) {
+          cardElement.querySelector(".card__like-number").style.display = "none";
         }
         insertCard.addItem(cardElement);
       },
@@ -71,19 +72,18 @@ function addCards(initialCards) {
   insertCard.renderItems();
 }
 function createCards() {
-  apiGetCards
-    .getInitialCards()
+  apiGetCards.getInitialCards()
     .then((initialCards) => {
-      console.log(initialCards);
       addCards(initialCards);
+      console.log(initialCards);
     })
     .catch((error) => {
-      alert("Error al cargar la información del usuario:", error);
+      alert("Error al cargar la información de las tarjetas:", error);
     });
 }
 createCards();
 
-const openPopupCard = new PopupWithForm("popup-add", (formData) => {
+const popupCard = new PopupWithForm("popup-add",(formData) => {
   const apiInsertCard = new Api({
     baseUrl: "https://around.nomoreparties.co/v1/web_es_09/cards",
     headers: {
@@ -95,20 +95,22 @@ const openPopupCard = new PopupWithForm("popup-add", (formData) => {
       name: formData.name,
     },
   });
-  apiInsertCard
-    .setCard()
+  apiInsertCard.setCard()
     .then((initialCards) => {
       createCards();
     })
     .catch((error) => {
-      // Manejar errores
-      alert("Error al cargar la información del usuario:", error);
-    });
+      alert("Error al enviar la tarjeta no se pudo cargar:", error);
+    })
+    .finally(() => {
+      renderLoading(false,".popup-add__btn-save");
+      popupCard.close();
+  });
 });
 
 const userInfo = new UserInfo(inputSelectorsPopup);
-const openPopupProfile = new PopupWithForm("popup", (datos) => {
-  console.log(datos);
+
+const popupProfile = new PopupWithForm("popup",(datos) => {
   const editUser = new Api({
     baseUrl: "https://around.nomoreparties.co/v1/web_es_09/users/me",
     headers: {
@@ -120,42 +122,31 @@ const openPopupProfile = new PopupWithForm("popup", (datos) => {
       name: datos.name,
     },
   });
-  editUser
-    .modifyUser()
+  editUser.modifyUser()
     .then((datoUserEdit) => {
       userInfo.setUserInfo(datoUserEdit);
-      console.log(datoUserEdit);
     })
     .catch((error) => {
-      // Manejar errores
-      console.error("Lo siento ocurrio un error:" + error);
-    });
+      console.error("Lo siento no se pudo modificar la informacion:" + error);
+    })
+    .finally(() => {
+      renderLoading(false,".popup__btn-save");
+      popupProfile.close();
+  });
 });
 
 const formProfile = new FormValidator(popupFormSelectorsToValidate, ".popup");
-btnEditarProfile.addEventListener("click", function () {
-  const getUserData = userInfo.getUserInfo();
-  elementPopupName.value = getUserData.name;
-  elementPopupJob.value = getUserData.about;
-  openPopupProfile.open();
-  formProfile.enableValidation();
-});
-const formCard = new FormValidator(
-  popupAddFormSelectorsToValidate,
-  ".popup-add"
-);
-btnAddCard.addEventListener("click", function () {
-  openPopupCard.open();
-  formCard.enableValidation();
-});
+const formCard = new FormValidator(popupAddFormSelectorsToValidate,".popup-add");
+const formEditImg = new FormValidator(popupEditImgFormToValidate,".popup-edit-img");
+
+
 profileImage.onmouseover = function () {
   contentProfile.classList.add("profile__content-fond_opened");
 };
 profileImage.onmouseout = function () {
   contentProfile.classList.remove("profile__content-fond_opened");
 };
-const openPopupEditImg = new PopupWithForm("popup-edit-img", (formData) => {
-  console.log(formData);
+const popupEditImg = new PopupWithForm("popup-edit-img", (formData) => {
   const editImgUser = new Api({
     baseUrl: "https://around.nomoreparties.co/v1/web_es_09/users/me/avatar",
     headers: {
@@ -166,24 +157,36 @@ const openPopupEditImg = new PopupWithForm("popup-edit-img", (formData) => {
       avatar: formData.link,
     },
   });
-  editImgUser
-    .modifyImgUser()
+  editImgUser.modifyImgUser()
     .then((modifyImgUser) => {
       elementProfileContImg.style.backgroundImage = `url('${modifyImgUser.avatar}')`;
       console.log(modifyImgUser);
     })
     .catch((error) => {
-      // Manejar errores
       console.error("Lo siento ocurrio un error:" + error);
-    });
+    })
+    .finally(() => {
+      renderLoading(false,".popup-edit-img__btn-save");
+      popupEditImg.close();
+  });
 });
 
-const formEditImg = new FormValidator(
-  popupEditImgFormToValidate,
-  ".popup-edit-img"
-);
+btnEditarProfile.addEventListener("click", function () {
+  const getUserData = userInfo.getUserInfo();
+  elementPopupName.value = getUserData.name;
+  elementPopupJob.value = getUserData.about;
+  popupProfile.open();
+  formProfile.enableValidation();
+});
+
+btnAddCard.addEventListener("click", function () {
+  popupCard.open();
+  formCard.enableValidation();
+});
 
 btnEditImgProfile.addEventListener("click", function () {
-  openPopupEditImg.open();
+  popupEditImg.open();
   formEditImg.enableValidation();
 });
+
+

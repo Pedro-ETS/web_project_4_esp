@@ -6,7 +6,6 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  margin-top: 3px;
 }
 .card__btn-love:hover {
   opacity: 0.5;
