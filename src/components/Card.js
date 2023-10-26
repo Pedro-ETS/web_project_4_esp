@@ -61,7 +61,7 @@ export default class Card {
       headers: {
         authorization: "33adefcc-a71e-4103-8764-faa4d26a6099",
         "Content-Type": "application/json",
-      },
+      }, 
     });
     deletelikeApi.deleteCard()
       .then((res) => {

@@ -1,15 +1,15 @@
 export default class Api {
-  constructor({baseUrl,headers,datos}) {
+  constructor({ baseUrl, headers, datos }) {
     this._url = baseUrl;
     this._authorization = headers.authorization;
-    this._contentType=headers["Content-Type"];
+    this._contentType = headers["Content-Type"];
     this._datos = datos;
   }
   getInitialCards() {
     return fetch(this._url, {
       headers: {
         authorization: this._authorization,
-        "Content-Type": this._contentType
+        "Content-Type": this._contentType,
       },
     }).then((res) => {
       if (res.ok) {
@@ -18,91 +18,84 @@ export default class Api {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
-  setCard(){
+  setCard() {
     return fetch(this._url, {
       method: "POST",
       body: JSON.stringify({
         link: this._datos.link,
-        name: this._datos.name
+        name: this._datos.name,
       }),
       headers: {
         authorization: this._authorization,
-        "Content-Type": this._contentType
+        "Content-Type": this._contentType,
       },
     }).then((res) => {
       if (res.ok) {
         return res.json();
       }
-      // si el servidor devuelve un error, rechaza el promise
       return Promise.reject(`Error: ${res.status}`);
-    })
+    });
   }
-  likeCard(){
+  likeCard() {
     return fetch(this._url, {
       method: "PUT",
       headers: {
         authorization: this._authorization,
-        "Content-Type": this._contentType
+        "Content-Type": this._contentType,
       },
     }).then((res) => {
       if (res.ok) {
         return res.json();
       }
-      // si el servidor devuelve un error, rechaza el promise
       return Promise.reject(`Error: ${res.status}`);
-    })
+    });
   }
-
-  deleteCard(){
+  deleteCard() {
     return fetch(this._url, {
       method: "DELETE",
       headers: {
         authorization: this._authorization,
-        "Content-Type": this._contentType
+        "Content-Type": this._contentType,
       },
     }).then((res) => {
       if (res.ok) {
         return res.json();
       }
-      // si el servidor devuelve un error, rechaza el promise
-      return Promise.reject(`Error: ${res.status}`);
-    })
-  }
-  getUser(){
-    return fetch(this._url, {
-      headers: {
-        authorization: this._authorization,
-        "Content-Type": this._contentType
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // si el servidor devuelve un error, rechaza el promise
       return Promise.reject(`Error: ${res.status}`);
     });
   }
-  modifyUser(){
+  getUser() {
+    return fetch(this._url, {
+      headers: {
+        authorization: this._authorization,
+        "Content-Type": this._contentType,
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+  modifyUser() {
     return fetch(this._url, {
       method: "PATCH",
       body: JSON.stringify({
         about: this._datos.about,
-        name: this._datos.name
+        name: this._datos.name,
       }),
       headers: {
         authorization: this._authorization,
-        "Content-Type": this._contentType
+        "Content-Type": this._contentType,
       },
     }).then((res) => {
       if (res.ok) {
         return res.json();
       }
-      // si el servidor devuelve un error, rechaza el promise
       return Promise.reject(`Error: ${res.status}`);
     });
   }
-
-  modifyImgUser(){// modifiar imagen
+  modifyImgUser() {
     return fetch(this._url, {
       method: "PATCH",
       body: JSON.stringify({
@@ -110,16 +103,13 @@ export default class Api {
       }),
       headers: {
         authorization: this._authorization,
-        "Content-Type": this._contentType
+        "Content-Type": this._contentType,
       },
     }).then((res) => {
       if (res.ok) {
         return res.json();
       }
-      // si el servidor devuelve un error, rechaza el promise
       return Promise.reject(`Error: ${res.status}`);
     });
   }
 }
-
-

@@ -18,12 +18,15 @@ import {
   btnEditImgProfile,
   elementNameProfile,
   elementJobProfile,
-  renderLoading
+  renderLoading,
 } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-
+const formProfile = new FormValidator(popupFormSelectorsToValidate, ".popup");
+const formCard = new FormValidator(popupAddFormSelectorsToValidate,".popup-add");
+const formEditImg = new FormValidator(popupEditImgFormToValidate,".popup-edit-img");
+const userInfo = new UserInfo(inputSelectorsPopup);
 const apiGetCards = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web_es_09/cards",
   headers: {
@@ -43,27 +46,21 @@ uownUser.getUser()
     elementNameProfile.textContent = userData.name;
     elementJobProfile.textContent = userData.about;
     elementProfileContImg.style.backgroundImage = `url('${userData.avatar}')`;
-    console.log(userData);
   })
   .catch((error) => {
     alert("Error al cargar la información del usuario:", error);
   });
-
 function addCards(initialCards) {
   const insertCard = new Section(
     {
       data: initialCards,
       renderer: (item) => {
-        const card = new Card (item,".card-template");
+        const card = new Card(item, ".card-template");
         const cardElement = card.generateCard();
         const idUser = cardElement.querySelector(".card__btn-trash").getAttribute("data-user-id");
         const likes = cardElement.querySelector(".card__like-number").textContent;
-        if (idUser !== "dcf490f1110c4236836c8193") {
-          cardElement.querySelector(".card__btn-trash").style.display = "none";
-        }
-        if (likes==0) {
-          cardElement.querySelector(".card__like-number").style.display = "none";
-        }
+        if (idUser !== "dcf490f1110c4236836c8193") cardElement.querySelector(".card__btn-trash").style.display = "none";
+        if (likes == 0) cardElement.querySelector(".card__like-number").style.display = "none";
         insertCard.addItem(cardElement);
       },
     },
@@ -75,15 +72,13 @@ function createCards() {
   apiGetCards.getInitialCards()
     .then((initialCards) => {
       addCards(initialCards);
-      console.log(initialCards);
     })
     .catch((error) => {
       alert("Error al cargar la información de las tarjetas:", error);
     });
 }
 createCards();
-
-const popupCard = new PopupWithForm("popup-add",(formData) => {
+const popupCard = new PopupWithForm("popup-add", (formData) => {
   const apiInsertCard = new Api({
     baseUrl: "https://around.nomoreparties.co/v1/web_es_09/cards",
     headers: {
@@ -103,14 +98,11 @@ const popupCard = new PopupWithForm("popup-add",(formData) => {
       alert("Error al enviar la tarjeta no se pudo cargar:", error);
     })
     .finally(() => {
-      renderLoading(false,".popup-add__btn-save");
+      renderLoading(false, ".popup-add__btn-save");
       popupCard.close();
-  });
+    });
 });
-
-const userInfo = new UserInfo(inputSelectorsPopup);
-
-const popupProfile = new PopupWithForm("popup",(datos) => {
+const popupProfile = new PopupWithForm("popup", (datos) => {
   const editUser = new Api({
     baseUrl: "https://around.nomoreparties.co/v1/web_es_09/users/me",
     headers: {
@@ -122,30 +114,19 @@ const popupProfile = new PopupWithForm("popup",(datos) => {
       name: datos.name,
     },
   });
-  editUser.modifyUser()
+  editUser
+    .modifyUser()
     .then((datoUserEdit) => {
       userInfo.setUserInfo(datoUserEdit);
     })
     .catch((error) => {
-      console.error("Lo siento no se pudo modificar la informacion:" + error);
+      alert("Lo siento no se pudo modificar la informacion:" + error);
     })
     .finally(() => {
-      renderLoading(false,".popup__btn-save");
+      renderLoading(false, ".popup__btn-save");
       popupProfile.close();
-  });
+    });
 });
-
-const formProfile = new FormValidator(popupFormSelectorsToValidate, ".popup");
-const formCard = new FormValidator(popupAddFormSelectorsToValidate,".popup-add");
-const formEditImg = new FormValidator(popupEditImgFormToValidate,".popup-edit-img");
-
-
-profileImage.onmouseover = function () {
-  contentProfile.classList.add("profile__content-fond_opened");
-};
-profileImage.onmouseout = function () {
-  contentProfile.classList.remove("profile__content-fond_opened");
-};
 const popupEditImg = new PopupWithForm("popup-edit-img", (formData) => {
   const editImgUser = new Api({
     baseUrl: "https://around.nomoreparties.co/v1/web_es_09/users/me/avatar",
@@ -163,14 +144,13 @@ const popupEditImg = new PopupWithForm("popup-edit-img", (formData) => {
       console.log(modifyImgUser);
     })
     .catch((error) => {
-      console.error("Lo siento ocurrio un error:" + error);
+      alert("Lo siento ocurrio un error:" + error)
     })
     .finally(() => {
-      renderLoading(false,".popup-edit-img__btn-save");
+      renderLoading(false, ".popup-edit-img__btn-save");
       popupEditImg.close();
-  });
+    });
 });
-
 btnEditarProfile.addEventListener("click", function () {
   const getUserData = userInfo.getUserInfo();
   elementPopupName.value = getUserData.name;
@@ -178,15 +158,17 @@ btnEditarProfile.addEventListener("click", function () {
   popupProfile.open();
   formProfile.enableValidation();
 });
-
 btnAddCard.addEventListener("click", function () {
   popupCard.open();
   formCard.enableValidation();
 });
-
 btnEditImgProfile.addEventListener("click", function () {
   popupEditImg.open();
   formEditImg.enableValidation();
 });
-
-
+profileImage.onmouseover = function () {
+  contentProfile.classList.add("profile__content-fond_opened");
+};
+profileImage.onmouseout = function () {
+  contentProfile.classList.remove("profile__content-fond_opened");
+};
