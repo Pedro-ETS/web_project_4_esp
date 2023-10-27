@@ -8,6 +8,7 @@ export default class Card {
     this._link = element.link;
     this._idImg = element._id;
     this._idUser = element.owner._id;
+    this._nameUser = element.owner.name;
     this._likes = element.likes;
     this._cardSelector = cardSelector;
     this._handleCardClick = this.handleCardClick;
@@ -22,13 +23,13 @@ export default class Card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-    this._element.querySelector(".card__btn-trash").setAttribute("data-user-id", this._idUser);
+    this._element.querySelector(".card__btn-trash").setAttribute("data-user-name", this._nameUser);
     this._element.querySelector(".card__image").setAttribute("id-card-img", this._idImg);
     this._element.querySelector(".card__image").setAttribute("src", this._link);
     this._element.querySelector(".card__image").setAttribute("alt", "Imagen de " + this._name);
     this._element.querySelector(".card__subtitle").textContent = this._name;
     this._element.querySelector(".card__like-number").textContent = this._likes.length;
-    const res = this._likes.find((user) => user.name === "Pedro E. T. Salgado");
+    const res = this._likes.find((user) => user.name === document.querySelector(".profile__subtitle").textContent);
     res == undefined ? console.log() : this._element.querySelector(".card__btn-love").classList.add("card__btn-love_activate");
     return this._element;
   }
@@ -61,7 +62,7 @@ export default class Card {
       headers: {
         authorization: "33adefcc-a71e-4103-8764-faa4d26a6099",
         "Content-Type": "application/json",
-      }, 
+      },
     });
     deletelikeApi.deleteCard()
       .then((res) => {

@@ -57,9 +57,9 @@ function addCards(initialCards) {
       renderer: (item) => {
         const card = new Card(item, ".card-template");
         const cardElement = card.generateCard();
-        const idUser = cardElement.querySelector(".card__btn-trash").getAttribute("data-user-id");
+        const nameUser = cardElement.querySelector(".card__btn-trash").getAttribute("data-user-name");
         const likes = cardElement.querySelector(".card__like-number").textContent;
-        if (idUser !== "dcf490f1110c4236836c8193") cardElement.querySelector(".card__btn-trash").style.display = "none";
+        if(elementNameProfile.textContent!==nameUser) cardElement.querySelector(".card__btn-trash").style.display = "none";
         if (likes == 0) cardElement.querySelector(".card__like-number").style.display = "none";
         insertCard.addItem(cardElement);
       },
@@ -141,7 +141,6 @@ const popupEditImg = new PopupWithForm("popup-edit-img", (formData) => {
   editImgUser.modifyImgUser()
     .then((modifyImgUser) => {
       elementProfileContImg.style.backgroundImage = `url('${modifyImgUser.avatar}')`;
-      console.log(modifyImgUser);
     })
     .catch((error) => {
       alert("Lo siento ocurrio un error:" + error)

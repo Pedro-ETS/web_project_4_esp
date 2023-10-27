@@ -20,23 +20,13 @@ export const elementNameProfile=container.querySelector(".profile__subtitle");
 export const elementJobProfile=container.querySelector(".profile__text");
 export const elementProfileContImg=container.querySelector(".profile__content");
 export const card=container.querySelector(".card");
-
 export function renderLoading(isLoading,elementClass){
   const elementBtn=document.querySelector(elementClass);
   if(elementClass===".popup-confirm-deletion__btn-delete"){
-    if(isLoading){
-      elementBtn.textContent = "Eliminando tarjeta...";
-       }else{
-         elementBtn.textContent = "si";
-       }
+    isLoading ? elementBtn.textContent = "Eliminando tarjeta..." : elementBtn.textContent = "si";
   }else{
-    if(isLoading){
-      elementBtn.textContent = "Guardando...";
-       }else{
-         elementBtn.textContent = "Guardar";
-       }
+    isLoading ? elementBtn.textContent = "Guardando..." :elementBtn.textContent = "Guardar";
   }
-
 }
 export const popupFormSelectorsToValidate = {
   inputSelectorForm: ".popup__input",
@@ -58,6 +48,5 @@ export const popupEditImgFormToValidate = {
   inactiveButtonClassForm: "popup-edit-img__btn-save_disabled",
   inputErrorClassForm: "popup-edit-img__input_type_error",
   errorClassForm: "popup-edit-img__input-error",
-
 };
 
