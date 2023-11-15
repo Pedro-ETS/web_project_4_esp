@@ -34,7 +34,7 @@ const apiGetCards = new Api({
     "Content-Type": "application/json",
   },
 });
-const uownUser = new Api({
+const uowrnUse = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web_es_09/users/me",
   headers: {
     authorization: "33adefcc-a71e-4103-8764-faa4d26a6099",
@@ -45,7 +45,7 @@ uownUser.getUser()
   .then((userData) => {
     elementNameProfile.textContent = userData.name;
     elementJobProfile.textContent = userData.about;
-    elementProfileContImg.style.backgroundImage = `url('${userData.avatar}')`;
+    elementProfileContImg.style.backgroundImage = `url('${userData .avatar}')`;
   })
   .catch((error) => {
     alert("Error al cargar la información del usuario:", error);
