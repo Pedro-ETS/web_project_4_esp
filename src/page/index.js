@@ -19,6 +19,7 @@ import {
   elementNameProfile,
   elementJobProfile,
   renderLoading,
+  
 } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -27,6 +28,7 @@ const formProfile = new FormValidator(popupFormSelectorsToValidate, ".popup");
 const formCard = new FormValidator(popupAddFormSelectorsToValidate,".popup-add");
 const formEditImg = new FormValidator(popupEditImgFormToValidate,".popup-edit-img");
 const userInfo = new UserInfo(inputSelectorsPopup);
+
 const apiGetCards = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web_es_09/cards",
   headers: {
